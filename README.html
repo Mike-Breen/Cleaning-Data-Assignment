@@ -126,9 +126,9 @@ $(document).ready(function () {
 <div id="run_analysis.r" class="section level2">
 <h2>run_analysis.R</h2>
 <p>This script performs the anaylsis on the un-tidy dataset that can be found in <a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip</a></p>
-<p>The script take no inputs from R but relies on the unzipped data being available in the users R Home directory.</p>
+<p>The script take no inputs from R but relies on the unzipped data being available in the users R Home directory (the output file “Output.txt” will also be placed in the Home directory).</p>
 <p>The script will combine the test and train datasets with their peripheral files (like variable names and actvity description strings in other files) before extracting the mean and standard deviation data. The script will then create 2 dataframes: 1 with the mean of all the variables previously mentioned per subject (ave.subject) and another with the mean of the variables per activity (ave.activity).</p>
-<p>The script will then create 2 .csv files for these dataframes (in the R Home directory) with the names: * ave.activity.csv (for the mean of variables per actvity) and * ave.subject.csv (for the mean of variables per subject).</p>
+<p>The script will then create a .txt file for these dataframes (in the R Home directory).</p>
 </div>
 
 

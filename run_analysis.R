@@ -9,6 +9,7 @@
 run_analysis <- function(){
   library(plyr)
   library(dplyr)
+  library(gdata)
 
   ## Gather all the text files into seperate data frames in R
   actvity.labels <- read.table("./UCI HAR Dataset/activity_labels.txt")
@@ -53,16 +54,24 @@ run_analysis <- function(){
   
   ## 1 - Create the average of the actvities dataframe
   ave.activity <- aggregate(mean.sd.data[,3:88],list(mean.sd.data$activity), mean)
-  ave.activity
   
   ## 2 - Create the average of the subjects dataframe
   ave.subject <- aggregate(mean.sd.data[,3:88],list(mean.sd.data$subject), mean)
   
-  ## 3 - Return both data frames in a list
+  ## 3 - Return into the txt file
   
-  write.csv(ave.activity,"ave.activity.csv")
-  write.csv(ave.subject,"ave.subject.csv")
+  width.output <- 32
+  width.output[1:86] <- 32
+  width.output <- append(width.output,values = 18, after = 0)
   
-  ##return(list(ave.activity,ave.subject))
+  cat("Summary of Averages by Activity",file="Output.txt", sep = "\n")
+  
+  write.fwf(ave.activity,"Output.txt", append=TRUE, width = width.output, justify = "right")
+  
+  cat("Summary of Averages by Subject",file="Output.txt", append=TRUE, sep = "\n")
+  
+  write.fwf(ave.subject,"Output.txt", append = TRUE, width = width.output, justify = "right")
+  
+
   
 }
